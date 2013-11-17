@@ -21,7 +21,15 @@ void PhedFastcgiHandler::handleRequest(fastcgi::Request *request, fastcgi::Handl
 
 void PhedFastcgiHandler::handlePostRequest(fastcgi::Request *request, fastcgi::HandlerContext *context){
     printf("it's POST method\n");
-
+    printf("content length: %d\n", request->getContentLength());
+    printf("tmp info: %d\n", request->countCookie());
+    std::vector<std::string> fileNames;// = new std::vector<std::string>;
+    request->remoteFiles(fileNames);
+    for(auto i: fileNames){
+        printf("%s\n", i.c_str());
+    }
+    fastcgi::DataBuffer data = request->requestBody();
+    printf("data is empty: %d\n", data.empty());
 }
 
 void PhedFastcgiHandler::handleGetRequest(fastcgi::Request *request, fastcgi::HandlerContext *context){
