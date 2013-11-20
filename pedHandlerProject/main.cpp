@@ -1,9 +1,10 @@
 #include <iostream>
 #include <cstdlib>
+
 #include <mongo/client/dbclient.h>
 //#include <mongo/bson/bson.h>
 
-void run() {
+/*void run() {
   mongo::DBClientConnection c;
   c.connect("localhost");
   mongo::BSONObj p = mongo::BSONObjBuilder().append("name", "Joe").append("age", 33).obj();
@@ -27,3 +28,4 @@ int main(){
     return EXIT_SUCCESS;
 }
 
+*/

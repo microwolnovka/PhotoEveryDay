@@ -1,5 +1,5 @@
-TEMPLATE = app #lib
-CONFIG += console #coment it
+TEMPLATE = lib #app #lib
+#CONFIG += console #coment it
 CONFIG -= app_bundle
 CONFIG -= qt
 
