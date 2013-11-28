@@ -1,5 +1,5 @@
 GET:
-
+	GET localhost/debug will print in fastcgi_daemon all info in DB 
 POST:
 1) to upload a photo client need to make 2 requests:
 	1. POST localhost/upload, body must have a photo 
