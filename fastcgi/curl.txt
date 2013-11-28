@@ -1,0 +1,3 @@
+curl --request POST localhost/upload -F "file=@testData.txt"
+curl --request POST localhost/info_upload --data "user=SomeUserID&FileName=file"
+
