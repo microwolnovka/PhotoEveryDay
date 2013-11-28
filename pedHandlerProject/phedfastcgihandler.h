@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include <mongo/client/dbclient.h>
 
 namespace photoeveryday{
 
@@ -22,8 +23,13 @@ public:
     virtual void handleRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
     virtual void handlePostRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
     virtual void handleGetRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
+    virtual void handleUploadPhotoRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
+    virtual void handleInfoPhotoRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
+
 private:
     volatile unsigned int requestNumber;
+    mongo::DBClientConnection DBConnect;
+
 
 
 };
