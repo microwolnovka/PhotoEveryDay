@@ -7,6 +7,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include <mongo/client/dbclient.h>
+#include <boost/filesystem.hpp>
 
 namespace photoeveryday{
 
@@ -22,8 +24,14 @@ public:
     virtual void handleRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
     virtual void handlePostRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
     virtual void handleGetRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
+    virtual void handleUploadPhotoRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
+    virtual void handleInfoPhotoRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
+
 private:
+    bool moveFile(const std::string& src, const std::string& dest);
     volatile unsigned int requestNumber;
+    mongo::DBClientConnection DBConnect;
+
 
 
 };

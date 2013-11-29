@@ -1,0 +1,6 @@
+GET:
+	GET localhost/debug will print in fastcgi_daemon all info in DB 
+POST:
+1) to upload a photo client need to make 2 requests:
+	1. POST localhost/upload, body must have a photo 
+	2. POST localhost/info_upload, body must have 2 args user=userID and FileName  where FileName is return to you in header "X-FILE" in server response

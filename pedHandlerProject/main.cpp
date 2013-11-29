@@ -1,31 +1,30 @@
 #include <iostream>
 #include <cstdlib>
 
-#include <mongo/client/dbclient.h>
+
+#include <boost/filesystem.hpp>
 //#include <mongo/bson/bson.h>
 
-/*void run() {
-  mongo::DBClientConnection c;
-  c.connect("localhost");
-  mongo::BSONObj p = mongo::BSONObjBuilder().append("name", "Joe").append("age", 33).obj();
-  c.insert("tutorial.persons", p);
-  std::cout << "count:" << c.count("tutorial.persons") << std::endl;
+bool moveFile(const std::string& src, const std::string& dest){
+  boost::filesystem3::path srcPath(src);
+  boost::filesystem3::path destPath(dest);
 
-  auto cursor =
-   c.query("tutorial.persons", mongo::BSONObj());
-  while (cursor->more())
-     std::cout << cursor->next().toString() << std::endl;
+  try {
+    rename(srcPath, destPath);
+  }
+  catch (...)
+  {
+    return false;
+  }
+
+  return exists(destPath);
 }
+
 
 int main(){
-    try {
-        run();
-        std::cout << "connected ok" << std::endl;
-    } catch( const mongo::DBException &e ) {
-        std::cout << "caught " << e.what() << std::endl;
-    }
-
-    return EXIT_SUCCESS;
+    std::string file("/tmp/photos/0000000003");
+    std::string jpgName = file + ".jpg";
+    moveFile(file, jpgName);
 }
 
-*/
+
