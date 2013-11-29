@@ -22,13 +22,19 @@ void PhedFastcgiHandler::handleRequest(fastcgi::Request *request, fastcgi::Handl
 void PhedFastcgiHandler::handlePostRequest(fastcgi::Request *request, fastcgi::HandlerContext *context){
     printf("it's POST method\n");
     printf("content length: %d\n", request->getContentLength());
-    printf("tmp info: %d\n", request->countCookie());
-    std::vector<std::string> fileNames;// = new std::vector<std::string>;
+    printf("tmp info: %d\n", request->countCookie()); std::vector<std::string> fileNames;// = new std::vector<std::string>;
     request->remoteFiles(fileNames);
-    for(auto i: fileNames){
-        printf("%s\n", i.c_str());
-    }
+    for(auto i: fileNames){ printf("%s\n", i.c_str());}
     fastcgi::DataBuffer data = request->requestBody();
+    auto st= request->getQueryString();
+    std::string headers = "X-FILE";
+    headers = request->getHeader(headers);
+    printf("QuerySTring: %s\nHeaders: %s\n",st.c_str(),headers.c_str());
+    std::string buffer;
+    request->headerNames(fileNames);
+    for(auto i: fileNames){ printf("%s\n", i.c_str());}
+    data.toString(buffer);
+    printf(" Request Body by the way: %s",buffer.c_str());
     printf("data is empty: %d\n", data.empty());
 }
 
