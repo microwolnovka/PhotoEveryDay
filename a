@@ -1,0 +1,27 @@
+181
+POST /info_upload HTTP/1.1
+User-Agent: yandex-tank/1.1.1
+Host: localhost
+Content-Length:23
+Content-Type: application/x-www-form-urlencoded
+Connection: Close
+
+user=jeen&FileName=open
+
+
+163
+POST /gifmake HTTP/1.1
+User-Agent: yandex-tank/1.1.1
+Host: localhost
+Content-Length:9
+Content-Type: application/x-www-form-urlencoded
+Connection: Close
+
+user=jeen
+
+125
+GET /images/0000000003 HTTP/1.1
+User-Agent: YandexTank/1.1.1
+Host: localhost
+Accept-Encoding: gzip, deflate
+Connection: Close
