@@ -7,7 +7,12 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+<<<<<<< HEAD
 #include "databasemanager.h"
+=======
+#include <mongo/client/dbclient.h>
+#include <boost/filesystem.hpp>
+>>>>>>> c81f72090d2bdbe92e1ddf2387cfb5819102345e
 
 namespace photoeveryday{
 
@@ -27,6 +32,7 @@ public:
     virtual void handleInfoPhotoRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
     virtual void handleMakeGifRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
 private:
+    bool moveFile(const std::string& src, const std::string& dest);
     volatile unsigned int requestNumber;
     DataBaseManager db;
 };
