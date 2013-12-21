@@ -7,12 +7,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
-<<<<<<< HEAD
 #include "databasemanager.h"
-=======
-#include <mongo/client/dbclient.h>
-#include <boost/filesystem.hpp>
->>>>>>> c81f72090d2bdbe92e1ddf2387cfb5819102345e
 
 namespace photoeveryday{
 
