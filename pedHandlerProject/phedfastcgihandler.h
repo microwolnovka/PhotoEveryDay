@@ -7,7 +7,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
-#include <mongo/client/dbclient.h>
+#include "databasemanager.h"
 
 namespace photoeveryday{
 
@@ -25,13 +25,10 @@ public:
     virtual void handleGetRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
     virtual void handleUploadPhotoRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
     virtual void handleInfoPhotoRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
-
+    virtual void handleMakeGifRequest(fastcgi::Request *request, fastcgi::HandlerContext *context);
 private:
     volatile unsigned int requestNumber;
-    mongo::DBClientConnection DBConnect;
-
-
-
+    DataBaseManager db;
 };
 
 FCGIDAEMON_REGISTER_FACTORIES_BEGIN()

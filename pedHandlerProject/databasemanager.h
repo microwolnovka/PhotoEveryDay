@@ -7,8 +7,15 @@
 class DataBaseManager
 {
 public:
-    DataBaseManager();
+    DataBaseManager(const char* basename);
+    ~DataBaseManager();
+    void addPhotoInfo(std::string& user, std::string& filename);
+    std::string* getJSONinfo(std::string& user);
+    void printAllBase();
+
 private:
+    mongo::DBClientConnection DBConnect;
+
 
 };
 

@@ -14,6 +14,5 @@ private:
     unsigned int id;
     unsigned int PhotoPath;
     volatile static unsigned int nextUniqId;
-    DataBaseManager dbManager;
 };
 

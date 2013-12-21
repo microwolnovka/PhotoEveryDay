@@ -1,3 +1,4 @@
-curl --request POST localhost/upload -F "file=@testData.txt"
+curl --data-binary @18.png localhost/upload
 curl --request POST localhost/info_upload --data "user=SomeUserID&FileName=file"
 
+curl --request POST localhost/gifmake --data "user=SomeUserID"
