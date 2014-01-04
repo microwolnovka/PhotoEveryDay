@@ -52,6 +52,26 @@ std::string* DataBaseManager::getJSONinfo(std::string & user){
     }catch(const mongo::DBException &e){
         std::cout << "caught " << e.what() <<std::endl;
     }
+
+}
+
+
+std::vector<std::string>* DataBaseManager::getUserFiles(const std::string *user){
+    std::auto_ptr<mongo::DBClientCursor> cursor =
+     DBConnect.query("PHEDdb.info", BSON("name"<<*user));
+    std::vector<std::string> *vec = new std::vector<std::string>;
+    try{
+        while(cursor->more()){
+            auto next = cursor->next();
+            if(next.hasField ("FileName")){
+                auto fileName = next.getStringField("FileName");
+                vec->push_back(fileName);
+            }
+        }
+    }catch(const mongo::DBException &e){
+        std::cout << "caught " << e.what() <<std::endl;
+    }
+    return vec;
 }
 
 
